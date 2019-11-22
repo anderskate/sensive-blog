@@ -26,7 +26,8 @@ class PostQuerySet(models.QuerySet):
         for post in self:
             post.comments_count = count_for_id[post.id]
 
-        return self
+        posts_with_comments_count = list(self)
+        return posts_with_comments_count
 
 
 class Post(models.Model):
