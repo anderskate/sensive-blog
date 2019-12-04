@@ -54,7 +54,7 @@ def post_detail(request, slug):
                .annotate(likes_count=Count('likes')) \
                .first()
 
-    comments = Comment.objects.filter(post=post).select_related('author')
+    comments = post.comments.select_related('author').all()
     serialized_comments = []
     
     for comment in comments:
